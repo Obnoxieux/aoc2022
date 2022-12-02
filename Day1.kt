@@ -19,5 +19,12 @@ fun main() {
         }
     }
     val largestNumberOfCalories = elvesCalories.maxOrNull()
-    print(largestNumberOfCalories)
+    print("The elf with the most calories carries $largestNumberOfCalories calories.")
+
+    val elvesCaloriesSorted = elvesCalories.sortedDescending()
+    var calorieCountTopThree = 0
+    for (i in 0..2) {
+        calorieCountTopThree += elvesCaloriesSorted[i]
+    }
+    print("\nThe top three elves are carrying a total of $calorieCountTopThree calories.")
 }
