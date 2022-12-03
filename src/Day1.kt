@@ -1,8 +1,10 @@
+package src
+
 import java.io.File
 
 //--- Day 1: Calorie Counting ---//
 
-fun main() {
+fun calculateDay1() {
     val filename = "inputs/day1.txt"
     val inputContent = File(filename).readText()
     val elfRations = inputContent.split("\n").toTypedArray()
