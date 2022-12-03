@@ -8,32 +8,32 @@ enum class GameResult {
     WON, LOST, DRAW
 }
 
-fun getRPSGameScore(player: String, opponent: String): Int {
+fun getRPSGameScore(opponent: String, player: String): Int {
     var score = 0
 
     when (player) {
-        "A" -> score += 1
-        "B" -> score += 2
-        "C" -> score += 3
+        "X" -> score += 1
+        "Y" -> score += 2
+        "Z" -> score += 3
         else -> {
             print("wrong values here, please disregard result")
         }
     }
-    val replacedPlayer = player.replace("A", "Rock").replace("B", "Paper").replace("C", "Scissors")
-    val replacedOpponent = opponent.replace("X", "Rock").replace("Y", "Paper").replace("Z", "Scissors")
+    val replacedOpponent = opponent.replace("A", "Rock").replace("B", "Paper").replace("C", "Scissors")
+    val replacedPlayer = player.replace("X", "Rock").replace("Y", "Paper").replace("Z", "Scissors")
 
-    val result = determineGameResult(replacedPlayer, replacedOpponent)
-    print("\n$result")
+    val result = determineGameResult(replacedOpponent, replacedPlayer)
 
     score += when (result) {
         GameResult.WON -> 6
         GameResult.LOST -> 0
         GameResult.DRAW -> 3
     }
+    //print("\nTotal Score added for this round is $score, result was $result")
     return score
 }
 
-fun determineGameResult(player: String, opponent: String): GameResult {
+fun determineGameResult(opponent: String, player: String): GameResult {
     return if (player == opponent) {
         GameResult.DRAW
     } else if (player == "Rock" && opponent == "Scissors" || player == "Scissors" && opponent == "Paper" || player == "Paper" && opponent == "Rock") {
@@ -51,12 +51,11 @@ fun calculateDay2() {
 
     var totalScore = 0
     for (game in games) {
-        val playersChoice = game.first().toString()
-        val opponentsChoice = game.last().toString()
-        totalScore += getRPSGameScore(playersChoice, opponentsChoice)
+        val playersChoice = game.last().toString()
+        val opponentsChoice = game.first().toString()
+        totalScore += getRPSGameScore(opponentsChoice, playersChoice)
         //DEBUG
         //print("\n$totalScore")
     }
-    //print(totalScore)
-    //11368 is wrong, too low
+    print(totalScore)
 }
