@@ -97,7 +97,7 @@ fun chooseCorrectShape(goal: PlayerGoal, opponentsChoice: String): String {
     }
 }
 
-fun calculatePart1(games: Array<String>) {
+fun calculateDay2Part1(games: List<String>) {
     var totalScore = 0
     for (game in games) {
         val opponentsChoice = game.first().toString()
@@ -107,7 +107,7 @@ fun calculatePart1(games: Array<String>) {
     print("Total Score for Part 1 is $totalScore")
 }
 
-fun calculatePart2(games: Array<String>) {
+fun calculateDay2Part2(games: List<String>) {
     var totalScore = 0
     for (game in games) {
         val opponentsChoice = game.first().toString()
@@ -121,8 +121,7 @@ fun calculatePart2(games: Array<String>) {
 
 fun calculateDay2() {
     val filename = "inputs/day2.txt"
-    val inputContent = File(filename).readText()
-    val games = inputContent.split("\n").toTypedArray()
-    calculatePart1(games = games)
-    calculatePart2(games = games)
+    val games = loadPuzzleInput(filename)
+    calculateDay2Part1(games = games)
+    calculateDay2Part2(games = games)
 }
