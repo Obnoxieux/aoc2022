@@ -1,5 +1,5 @@
-import src.calculateDay3Part1
+import src.calculateDay3
 
 fun main() {
-    calculateDay3Part1()
+    calculateDay3()
 }
